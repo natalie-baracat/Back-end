@@ -12,8 +12,8 @@
             <input type="text" name="busca" value="<%=busca%>" placeholder="Buscar disciplina ou professor">
             <button class="btn btn-primary">Buscar</button>
             <select name="ordenar" onchange="this.form.submit() // isso é um comando de JS!!">
-                <option value="nome_disciplina">Ordenar por disciplina</option>
-                <option value="nome_professor">Ordenar por professor</option>
+                <option value="nome_disciplina" <%= ordenar == 'nome_disciplina' ? 'selected' : '' %>>Ordenar por disciplina</option>
+                <option value="nome_professor" <%= ordenar == 'nome_professor' ? 'selected' : '' %>>Ordenar por professor</option>
             </select>
         </form>
 

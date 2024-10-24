@@ -77,6 +77,7 @@ h2 {
 .btn-primary {
   background: linear-gradient(32deg, rgba(0,113,233,1) 0%, rgba(137,201,255,1) 100%);
   color: white;
+  border: none;
 }
 
 .btn-edit {
@@ -129,6 +130,7 @@ h2 {
   background-color: #6c757d;
   color: white;
   margin-left: 10px;
+  border: none;
 }
 
 .form-consulta{
