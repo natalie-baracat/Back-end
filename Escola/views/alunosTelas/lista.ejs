@@ -1,7 +1,7 @@
 <%- include('../includes/header.ejs', {titulo: 'Dashboard' }) %>
     <main>
         <h2>Lista de alunos</h2>
-        <a href="/alunos_escola/novo" class="btn btn-primary">Adicionar aluno</a>
+        <a href="/alunos/novo" class="btn btn-primary">Adicionar aluno</a>
         <table class="dados-table">
             <thead>
                 <tr>
@@ -18,8 +18,8 @@
                         <td><%= aluno.nome %></td>
                         <td><%= aluno.email %></td>
                         <td>
-                            <a href="/alunos_escola/<%= aluno.id_aluno %>/editar" class="btn btn-edit">Editar</a>
-                            <form action="/alunos_escola/<%= aluno.id_aluno %>/deletar" method="POST">
+                            <a href="/alunos/<%= aluno.id_aluno %>/editar" class="btn btn-edit">Editar</a>
+                            <form action="/alunos/<%= aluno.id_aluno %>/deletar" method="POST">
                                 <button type="submit" class="btn btn-delete">Excluir</button>
                             </form>
                         </td>

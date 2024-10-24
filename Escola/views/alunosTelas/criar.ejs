@@ -1,0 +1,26 @@
+<%- include('../includes/header.ejs', {titulo: 'Adicionar aluno' }) %>
+    <main>
+        <h2>Adicionar novo aluno</h2>
+        <form action="/alunos/novo" method="POST" class="form">
+            <div class="form-group">
+                <label for="nome">Nome do aluno</label>
+                <input type="text" id="nome" name="nome" required/>
+            </div>
+            <div class="form-group">
+                <label for="email">E-mail do aluno</label>
+                <input type="text" id="email" name="email" required/>
+            </div>
+            <div class="form-group">
+                <label for="idade">Idade do aluno</label>
+                <input type="text" id="idade" name="idade" required/>
+            </div>
+            <div class="form-group">
+                <label for="CPF">CPF do aluno</label>
+                <input type="text" id="CPF" name="CPF" required/>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Adicionar</button>
+            <a href="/alunos" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </main>
+<%- include('../includes/footer.ejs') %>
