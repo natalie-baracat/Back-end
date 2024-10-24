@@ -2,6 +2,12 @@
     <main>
         <h2>Lista de alunos</h2>
         <a href="/alunos/novo" class="btn btn-primary">Adicionar aluno</a>
+
+        <form action="/alunos/" method="GET" class="form form-consulta">
+            <input type="text" name="busca" value="<%=busca%>" placeholder="Buscar aluno">
+            <button class="btn btn-primary">Buscar</button>
+        </form>
+
         <table class="dados-table">
             <thead>
                 <tr>
