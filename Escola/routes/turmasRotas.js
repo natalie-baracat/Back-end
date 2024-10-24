@@ -2,13 +2,36 @@ const express = require('express')
 const router = express.Router()
 const BD = require('../db')
 
-//listar turmas (R - read)
-router.get('/', async (req, res) => {
-    const buscaDados = await BD.query('SELECT * FROM turmas_escola')
-    res.render('turmasTelas/lista', {turmas_escola: buscaDados.rows})
-})
+// //listar turmas (R - read)
+// router.get('/', async (req, res) => {
+//     const buscaDados = await BD.query('SELECT * FROM turmas_escola')
+//     res.render('turmasTelas/lista', {turmas_escola: buscaDados.rows})
+// })
 
 //esses ai embaixo eu fiz sozinha :P
+
+//rota onde lista turmas (R - read)
+router.get('/', async (req, res) => { //para acessar essa rota, digito /turmas_escola/
+    //visualizando erro (se tiver)
+    try {
+        const busca = req.query.busca || ''
+        // const ordenar = req.query.ordenar || 'nome_disciplina'
+        const buscaDados = await BD.query(`
+            SELECT nome
+                FROM turmas_escola AS t
+                    WHERE upper(t.nome) like $1
+                ORDER BY nome ASC`, [`%${busca.toUpperCase()}%`]
+            )
+        res.render('turmasTelas/lista', {
+            turmas_escolas: buscaDados.rows,
+            busca: busca,
+            ordenar: ordenar
+        })
+    } catch (erro) {
+        console.log('Erro ao listar turmas_escola', erro)
+        res.render('turmasTelas/lista', {mensagem: erro})
+    }
+})
 
 //rota pra abrir tela para criar uma nova turma (C - create)
 router.get('/novo', (req, res) => { //para acessar essa rota, digito /turma/novo

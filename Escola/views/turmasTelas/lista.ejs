@@ -3,6 +3,11 @@
         <h2>Lista de turmas</h2>
         <!-- <%= // JSON.stringify(turmas) %> -->
         <a href="/turmas_escola/novo" class="btn btn-primary">Adicionar turma</a>
+
+        <form action="/turmas_escola/" method="GET" class="form form-consulta">
+            <input type="text" name="busca" value="<%=busca%>" placeholder="Buscar turma">
+            <button class="btn btn-primary">Buscar</button>
+        </form>
         <table class="dados-table">
             <thead>
                 <tr>
