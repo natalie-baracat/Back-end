@@ -1,9 +1,18 @@
 <%- include('../includes/header.ejs', {titulo: 'Dashboard' }) %>
     <main>
         <h2>Lista de professores</h2>
-        <!-- <%= // JSON.stringify(professores) %> -->
         <a href="/professores/novo" class="btn btn-primary">Adicionar professor</a>
         
+        <form action="/professores/" method="GET" class="form form-consulta">
+            <input type="text" name="busca" value="<%=busca%>" placeholder="Buscar professor">
+            <button class="btn btn-primary">Buscar</button>
+            <!-- <select name="ordenar" onchange="this.form.submit() // isso é um comando de JS!!"> -->
+                <!-- <option value="nome_disciplina" <%= ordenar == 'nome_disciplina' ? 'selected' : '' %>>Ordenar por disciplina</option>
+                <option value="nome_professor" <%= ordenar == 'nome_professor' ? 'selected' : '' %>>Ordenar por professor</option> -->
+            </select>
+        </form>
+
+
         <table class="dados-table">
             <thead>
                 <tr>

@@ -2,10 +2,33 @@ const express = require('express')
 const router = express.Router()
 const BD = require('../db')
 
+// //rota onde lista professores (R - read)
+// router.get('/', async (req, res) => { //para acessar essa rota, digito /professores/
+//     const buscaDados = await BD.query('SELECT * FROM professores')
+//     res.render('professoresTelas/lista', {professores: buscaDados.rows})
+// })
+
 //rota onde lista professores (R - read)
-router.get('/', async (req, res) => { //para acessar essa rota, digito /professores/
-    const buscaDados = await BD.query('SELECT * FROM professores')
-    res.render('professoresTelas/lista', {professores: buscaDados.rows})
+router.get('/', async (req, res) => { //para acessar essa rota, digito /disciplinas/
+    //visualizando erro (se tiver)
+    try {
+        const busca = req.query.busca || ''
+        const ordenar = req.query.ordenar || 'nome_professor'
+        const buscaDados = await BD.query(`
+            SELECT *
+                FROM professores AS p
+                    WHERE upper(p.nome_professor) like $1
+                ORDER BY ${ordenar}`, [`%${busca.toUpperCase()}%`]
+            )
+        res.render('professoresTelas/lista', {
+            professores: buscaDados.rows,
+            busca: busca,
+            ordenar: ordenar
+        })
+    } catch (erro) {
+        console.log('Erro ao listar professores', erro)
+        res.render('professoresTelas/lista', {mensagem: erro})
+    }
 })
 
 //rota pra abrir tela para criar um novo professor (C - create)
