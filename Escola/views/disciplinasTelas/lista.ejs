@@ -1,0 +1,44 @@
+<%- include('../includes/header.ejs', {titulo: 'Lista de disciplinas' }) %>
+    <main>
+        <h2>Lista de disciplinas</h2>
+        <a href="/disciplinas/novo" class="btn btn-primary">Adicionar disciplina</a>
+
+        <!-- mensagem de erro -->
+        <% if (typeof mensagem != 'undefined') { %> <!-- obs: se tivesse erro, mensagem seria undefined-->
+            <p class="erro"><%= mensagem %></p>
+        <% } %>
+
+        <form action="/disciplinas/" method="GET" class="form form-consulta">
+            <input type="text" name="busca" value="<%=busca%>" placeholder="Buscar disciplina ou professor">
+            <button class="btn btn-primary">Buscar</button>
+            <select name="ordenar" onchange="this.form.submit() // isso é um comando de JS!!">
+                <option value="nome_disciplina">Ordenar por disciplina</option>
+                <option value="nome_professor">Ordenar por professor</option>
+            </select>
+        </form>
+
+        <table class="dados-table">
+            <thead>
+                <tr>
+                    <th>Disciplina</th>
+                    <th>Professor</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(let disciplina of vetorDados) { //pega todos os dados de cada linha da tabela disciplinas%>
+                    <tr>
+                        <td><%= disciplina.nome_disciplina %></td>
+                        <td><%= disciplina.nome_professor %></td>
+                        <td>
+                            <a href="/disciplinas/<%= disciplina.id_disciplina %>/editar" class="btn btn-edit">Editar</a> <!--botao de editar-->
+                            <form action="/disciplinas/<%= disciplina.id_disciplina %>/deletar" method="POST"> <!--botao de excluir-->
+                                <button type="submit" class="btn btn-delete">Excluir</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </main>
+<%- include('../includes/footer.ejs') %>

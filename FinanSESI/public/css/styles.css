@@ -1,0 +1,183 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: url(https://thumbs.dreamstime.com/b/school-supplies-double-border-lined-paper-background-colorful-over-95537278.jpg);
+    /* background-color: rgb(240, 242, 227); */
+    display: flex;
+    flex-direction: column;
+    height: 100dvh;
+}
+
+header {
+    background-color: #b2112d;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #f7f7f7;
+    box-shadow: 0 3px 7px rgba(24, 0, 48, 0.5);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+header > nav {
+    display: flex;
+    gap: 15px;
+}
+
+header > nav > a {
+    text-decoration: none;
+    color: #f7f7f7;
+    font-weight: bold;
+}
+
+header > nav > a:hover{
+    color: #c8bcc1;
+}
+
+main {
+    flex: 1; /*preeche o espaço proporcionalmente*/
+    padding: 20px;
+    background-color: #f7f7f7;
+    margin: 30px;
+    border-radius: 7px;
+    box-shadow: 0 3px 7px rgba(24, 0, 48, 0.5);
+}
+
+.boas-vindas {
+    text-align: center;
+}
+
+/* card do index */
+.container-card {
+    display: flex;
+    flex-direction: row;
+    gap: 1.2rem;
+    text-align: center;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    height: 300px;
+    justify-content: center;
+
+}
+
+.card {
+    width: 200px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(48, 4, 80, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3 ease;
+    margin: 30px 0px;
+    padding: 30px 18px;
+    justify-content: center;
+    flex: 0 0 auto; /*evita que os cards encolham ou se ajustem automaticamente */
+}
+
+.card:hover{
+    /* ao passar o cursor em cima, muda a posição do card */
+    transform: scale(1.1);
+}
+
+.titulo-card {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #b2112d;
+}
+
+.card > a {
+    text-decoration: none;
+}
+
+.imagem-card {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.imagem-card > img {
+    max-width: 100%; /*mantem o limite max do tamanho do container*/
+    height: 150px /* mantem a proporcao da imagem */
+}
+
+
+.imagem-card > figcaption > p{
+    width: 100%;
+}
+
+.conteudo-card {
+    padding: 10px;
+    background-color: #3a1010(248, 248, 248);
+    height: 70px
+
+}
+
+footer {
+    background-color: #8d8d8d;
+    text-align: center;
+    padding: 10px;
+    box-shadow: 0 -3px 7px rgba(24, 0, 48, 0.5);
+}
+
+.titulo {
+    text-decoration: none;
+    text-align: center;
+    color: #b2112d ;
+}
+
+form {
+    max-width: 400px;
+    margin: auto;
+}
+
+input {
+    width: 95%;
+    padding: 7px;
+    margin: 10px 0;
+}
+
+button {
+    background-color: #b2112d;
+    color:#f7f7f7;
+    font-weight: bold;
+    padding: 8px 20px;
+    border: none solid none solid;
+    border-color: rgb(240, 137, 159);
+    border-radius: 7px;
+    cursor: pointer;   
+    
+}
+
+button:hover {
+    background-color:#c94666;
+}
+
+.resultado {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.sobre {
+    position: relative;
+    /* align-items: center;
+    margin: auto;
+    padding: 20px; */
+}
+
+.embaixo {
+    position: absolute;
+    bottom: 9rem;
+}
+
+input {
+    border: solid 1px darkred ;
+    border-radius: 7px;
+}

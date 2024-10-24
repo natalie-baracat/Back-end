@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FinanSESI</title>
+    <link rel="stylesheet" href="./css/styles.css">
+  </head>
+  <body>
+    <!-- cabeçalho -->
+    <header>
+      <div class="logo">
+        <img src="./img/logo.png"/>
+        FinanSESI
+      </div>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/juros-simples">Juros Simples</a>
+        <a href="/juros-composto">Juros Composto</a>
+        <a href="/sobre">Sobre</a>
+      </nav>
+    </header>
+    <!-- corpo principal da pagina | aqui é onde os conteudos serao inseridos -->
+    <main>
+      <!-- codigo ejs -->
+      <%- body %>
+    </main>
+    <!-- rodape da pagina -->
+    <footer>
+      <img src="./img/logo_sesisenai.png"/>
+    </footer>
+  </body>
+</html>

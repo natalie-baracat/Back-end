@@ -1,0 +1,14 @@
+{
+  "name": "018",
+  "version": "1.0.0",
+  "description": "",
+  "main": "018.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Natalie",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.0"
+  }
+}

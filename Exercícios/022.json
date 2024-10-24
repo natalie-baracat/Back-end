@@ -1,0 +1,8 @@
+{
+    "nome": "Natalie",
+    "nrSorte": 7,
+    "irma": {
+        "nome": "Nicole",
+        "idade": 12
+    }
+}

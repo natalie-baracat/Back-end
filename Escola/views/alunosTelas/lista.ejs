@@ -1,0 +1,31 @@
+<%- include('../includes/header.ejs', {titulo: 'Dashboard' }) %>
+    <main>
+        <h2>Lista de alunos</h2>
+        <a href="/alunos_escola/novo" class="btn btn-primary">Adicionar aluno</a>
+        <table class="dados-table">
+            <thead>
+                <tr>
+                    <th>Turma</th>
+                    <th>Nome do aluno</th>
+                    <th>E-mail</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(let aluno of alunos) {%>
+                    <tr>
+                        <td><%= aluno.nome %></td>
+                        <td><%= aluno.nome %></td>
+                        <td><%= aluno.email %></td>
+                        <td>
+                            <a href="/alunos_escola/<%= aluno.id_aluno %>/editar" class="btn btn-edit">Editar</a>
+                            <form action="/alunos_escola/<%= aluno.id_aluno %>/deletar" method="POST">
+                                <button type="submit" class="btn btn-delete">Excluir</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </main>
+<%- include('../includes/footer.ejs') %>

@@ -1,0 +1,28 @@
+<%- include('../includes/header.ejs', {titulo: 'Dashboard' }) %>
+    <main>
+        <h2>Lista de turmas</h2>
+        <!-- <%= // JSON.stringify(turmas) %> -->
+        <a href="/turmas_escola/novo" class="btn btn-primary">Adicionar turma</a>
+        <table class="dados-table">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(let turma of turmas_escola) { //pega todos os dados de cada linha da tabela turmas%>
+                    <tr>
+                        <td><%= turma.nome %></td>
+                        <td>
+                            <a href="/turmas_escola/<%= turma.id_turma %>/editar" class="btn btn-edit">Editar</a>
+                            <form action="/turmas_escola/<%= turma.id_turma %>/deletar" method="POST">
+                                <button type="submit" class="btn btn-delete">Excluir</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </main>
+<%- include('../includes/footer.ejs') %>

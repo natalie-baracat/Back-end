@@ -1,0 +1,28 @@
+<h1 class="titulo">Juros simples</h1>
+
+<form action="/juros-simples" method="post">
+    <label for="capital">Capital Inicial (C)</label>
+    <input type="number" id="capital" name="capital" placeholder="Ex: 7000" required>
+
+    <label for="taxa">Taxa de juros mensal (i%)</label>
+    <input type="number" id="taxa" name="taxa" placeholder="Ex: 5" required>
+
+    <label for="tempo">Tempo em meses (t)</label>
+    <input type="number" id="tempo" name="tempo" placeholder="Ex: 3" required>
+    
+    <button type="submit">Calcular</button>
+
+</form>
+
+<!-- javascript -->
+<% if(typeof j != 'undefined') { //se a variavel tiver um valor, exibir o resultado %>
+    <!-- html -->
+    <div class="resultado">
+        <h2>Resultado </h2>
+        <p>Capital: R$<%=c.toFixed(2) %></p>
+        <p>Taxa: <%=i %>% a.m. (ao mês)</p>
+        <p>Tempo: <%=t %> meses</p>
+        <p>Juros Simples: R$<%=j.toFixed(2) %></p>
+        <p>Total (montante): R$<%=montante.toFixed(2) %></p>
+    </div>
+<% } %>
