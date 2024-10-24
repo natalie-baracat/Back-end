@@ -2,13 +2,37 @@ const express = require('express')
 const router = express.Router()
 const BD = require('../db')
 
-//rota onde lista alunos (R - read)
+// //rota onde lista alunos (R - read)
+// router.get('/', async (req, res) => { //para acessar essa rota, digito /alunos/
+//     const buscaDados = await BD.query(`
+//         SELECT a.nome, a.email, t.nome FROM alunos AS a 
+//             INNER JOIN turmas_escola AS t ON a.id_turma = t.id_turma
+//     `)
+//     res.render('alunosTelas/lista', {alunos: buscaDados.rows})
+// })
+
+
+//rota onde lista disciplinas (R - read)
 router.get('/', async (req, res) => { //para acessar essa rota, digito /alunos/
-    const buscaDados = await BD.query(`
-        SELECT a.nome, a.email, t.nome FROM alunos AS a 
-            INNER JOIN turmas_escola AS t ON a.id_turma = t.id_turma
-    `)
-    res.render('alunosTelas/lista', {alunos: buscaDados.rows})
+    //visualizando erro (se tiver)
+    try {
+        const busca = req.query.busca || ''
+        const ordenar = req.query.ordenar || 'nome'
+        const buscaDados = await BD.query(`
+            SELECT a.nome, a.email, t.nome FROM alunos AS a 
+                    INNER JOIN turmas_escola AS t ON a.id_turma = t.id_turma
+                    WHERE upper(a.nome) like $1 or upper(t.nome) like $1
+                ORDER BY ${ordenar}`, [`%${busca.toUpperCase()}%`]
+            )
+        res.render('alunosTelas/lista', {
+            vetorDados: buscaDados.rows,
+            busca: busca,
+            ordenar: ordenar
+        })
+    } catch (erro) {
+        console.log('Erro ao listar alunos', erro)
+        res.render('alunosTelas/lista', {mensagem: erro})
+    }
 })
 
 //rota pra abrir tela para criar aluno (C - create)
