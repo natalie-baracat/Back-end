@@ -25,7 +25,7 @@ router.get('/', async (req, res) => { //para acessar essa rota, digito /alunos/
                 ORDER BY ${ordenar}`, [`%${busca.toUpperCase()}%`]
             )
         res.render('alunosTelas/lista', {
-            vetorDados: buscaDados.rows,
+            alunos: buscaDados.rows,
             busca: busca,
             ordenar: ordenar
         })
