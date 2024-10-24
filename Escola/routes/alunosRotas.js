@@ -17,9 +17,9 @@ router.get('/', async (req, res) => { //para acessar essa rota, digito /alunos/
     //visualizando erro (se tiver)
     try {
         const busca = req.query.busca || ''
-        const ordenar = req.query.ordenar || 'nome'
+        const ordenar = req.query.ordenar || 'a.nome'
         const buscaDados = await BD.query(`
-            SELECT a.nome, a.email, t.nome FROM alunos AS a 
+            SELECT a.nome, a.email, t.nome AS turma, a.id_aluno, a.cpf FROM alunos AS a 
                     INNER JOIN turmas_escola AS t ON a.id_turma = t.id_turma
                     WHERE upper(a.nome) like $1 or upper(t.nome) like $1
                 ORDER BY ${ordenar}`, [`%${busca.toUpperCase()}%`]

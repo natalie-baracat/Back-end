@@ -15,15 +15,15 @@ router.get('/', async (req, res) => { //para acessar essa rota, digito /turmas_e
     //visualizando erro (se tiver)
     try {
         const busca = req.query.busca || ''
-        // const ordenar = req.query.ordenar || 'nome_disciplina'
+        const ordenar = req.query.ordenar || 'nome_disciplina'
         const buscaDados = await BD.query(`
-            SELECT nome
+            SELECT * 
                 FROM turmas_escola AS t
                     WHERE upper(t.nome) like $1
                 ORDER BY nome ASC`, [`%${busca.toUpperCase()}%`]
             )
         res.render('turmasTelas/lista', {
-            turmas_escolas: buscaDados.rows,
+            turmas_escola: buscaDados.rows,
             busca: busca,
             ordenar: ordenar
         })

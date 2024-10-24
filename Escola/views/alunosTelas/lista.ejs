@@ -7,16 +7,20 @@
                 <tr>
                     <th>Turma</th>
                     <th>Nome do aluno</th>
+                    <th>Id</th>
                     <th>E-mail</th>
+                    <th>CPF</th>
                     <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
                 <% for(let aluno of alunos) {%>
                     <tr>
+                        <td><%= aluno.turma %></td>
                         <td><%= aluno.nome %></td>
-                        <td><%= aluno.nome %></td>
+                        <td><%= aluno.id_aluno %></td>
                         <td><%= aluno.email %></td>
+                        <td><%= aluno.cpf %></td>
                         <td>
                             <a href="/alunos/<%= aluno.id_aluno %>/editar" class="btn btn-edit">Editar</a>
                             <form action="/alunos/<%= aluno.id_aluno %>/deletar" method="POST">
