@@ -18,7 +18,8 @@ app.use(session({ //
 
 //middleware para verificar se o usuario esta logado
 const verificarAutenticacao = (req, res, next) => {
-    if(req.session.usuarioLogado) {
+    if (req.session.usuarioLogado) {
+        res.locals.nomeUsuario = req.session.nomeUsuario //disponibilizando o nome para ser exibido nas telas .ejs
         next() //se estiver, vai pra proxima pag
     } else {
         res.redirect('/auth/login') //senao, é redirecionado para tela de login

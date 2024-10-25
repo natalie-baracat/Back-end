@@ -22,6 +22,10 @@ nav a {
   color: white;
   margin: 0 10px;
   text-decoration: none;
+  /* alteraçoes que fiz pra arrumar os novos icones */
+  display: inline-flex;
+  align-items: center;
+  /**************************************************/
 }
 
 main {
@@ -160,4 +164,10 @@ h2 {
   gap: 1rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
+}
+
+.icones-header {
+  width: 22px;
+  height: 100%;
+  margin-left: 2px;
 }
