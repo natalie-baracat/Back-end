@@ -17,6 +17,9 @@
             border-radius: 8px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
+        .cor-botao {
+            background: linear-gradient(32deg, rgba(0,113,233,1) 0%, rgba(137,201,255,1) 100%);
+        }
     </style>
 </head>
 <body>
@@ -31,7 +34,7 @@
                 <label for="password" class="form-label">Senha</label>
                 <input type="password" class="form-control" id="password" name="senha" placeholder="Digite sua senha" required>
             </div>
-            <button type="submit" class="btn btn-primary w-100">Entrar</button>
+            <button type="submit" class="btn btn-primary cor-botao w-100">Entrar</button>
         </form>
         <div class="text-center mt-3">
             <% if (typeof mensagem !='undefined' ) { %>

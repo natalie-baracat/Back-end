@@ -92,12 +92,12 @@ h2 {
 }
 
 .btn-edit {
-  background-color: #28a745;
+  background: linear-gradient(32deg, rgba(40,167,69,1) 31%, rgba(154,204,41,1) 100%);
   color: white;
 }
 
 .btn-delete {
-  background-color: #dc3545;
+  background: linear-gradient(32deg, rgba(220,53,69,1) 31%, rgba(232,96,65,1) 100%);
   color: white;
   border: none;
 }
