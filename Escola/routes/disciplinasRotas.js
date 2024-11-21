@@ -29,7 +29,7 @@ router.get('/', async (req, res) => { //para acessar essa rota, digito /discipli
                     WHERE upper(d.nome_disciplina) like $1 or upper(p.nome_professor) like $1`
         )
 
-        const totalPgs = Math.ceil(totalItems.rows[0].total / limite)
+        const totalPgs = Math.ceil(totalItens.rows[0].total / limite)
 
         res.render('disciplinasTelas/lista', {
             vetorDados: buscaDados.rows,
@@ -38,7 +38,7 @@ router.get('/', async (req, res) => { //para acessar essa rota, digito /discipli
             pgAtual : parseInt(pg),
             totalPgs : totalPgs
         })
-        
+
     } catch (erro) {
         console.log('Erro ao listar disciplinas', erro)
         res.render('disciplinasTelas/lista', {mensagem: erro})

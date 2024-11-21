@@ -40,5 +40,20 @@
                 <% } %>
             </tbody>
         </table>
+        <div class="pagination">
+            <!-- ir pra pagina anterior (se existir) -->
+            <% if pgAtual > 1 { %> 
+                <a href="/disciplinas?pg=<%= pgAtual - 1 %>">Anterior</a> <!-- o ? significa que estou enviando um parametro-->
+            <% } %>
+            
+            <!-- qual a pagina atual -->
+            <span>Página <%= pgAtual %> de <%= totalPgs %></span>
+            
+            <!-- ir pra proximapagina (se existir) -->
+            <% if pgAtual < totalPgs { %> 
+                <a href="/disciplinas?pg=<%= pgAtual + 1 %>">Próxima</a> <!-- o ? significa que estou enviando um parametro-->
+            <% } %>
+        </div>
+
     </main>
 <%- include('../includes/footer.ejs') %>
