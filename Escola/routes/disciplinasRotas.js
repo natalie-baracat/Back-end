@@ -26,7 +26,8 @@ router.get('/', async (req, res) => { //para acessar essa rota, digito /discipli
             SELECT COUNT(*) AS total
                 FROM disciplinas AS d
                     LEFT JOIN professores AS p ON d.id_professor = p.id_professor
-                    WHERE upper(d.nome_disciplina) like $1 or upper(p.nome_professor) like $1`
+                    WHERE upper(d.nome_disciplina) like $1 or upper(p.nome_professor) like $1`,
+                    [`%${busca.toUpperCase()}%`]
         )
 
         const totalPgs = Math.ceil(totalItens.rows[0].total / limite)
