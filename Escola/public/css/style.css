@@ -1,5 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.prompt-medium {
+  font-family: "Prompt", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+/* .prompt-medium-italic {
+  font-family: "Prompt", sans-serif;
+  font-weight: 500;
+  font-style: italic;
+} */
+
+.prompt-regular {
+  font-family: "Prompt", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
 body {
-  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
   background-color: #f4f4f9;
@@ -28,23 +47,85 @@ nav a {
   /**************************************************/
 }
 
+nav a span:hover {
+  font-family: "Prompt", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.icones-header {
+  width: 22px;
+  height: 100%;
+  /* margin-left: 2px; */
+  margin-right: 4px;
+}
+
+/* https://stackoverflow.com/questions/54616139/how-to-animate-underline-from-left-to-right */
+
+.un {
+  display: inline-block;
+  padding-bottom:2px;
+  background: linear-gradient(32deg, rgba(137,201,255,1) 0%, rgba(0,113,233,1) 100%);
+  background-position: 0 100%; /*OR bottom left*/
+  background-size: 0% 2px;
+  background-repeat: no-repeat;
+  transition:
+    background-size 0.3s,
+    background-position 0s 0.3s; /*change after the size immediately*/
+}
+
+.un:hover {
+  background-position: 100% 100%; /*OR bottom right*/
+  background-size: 100% 2px;
+}
+
+/*********************************************************************************************/
+
+.fundo-dash {
+  background: linear-gradient(32deg, rgba(0,113,233,1) 0%, rgba(137,201,255,1) 100%);
+}
+
 main {
   padding: 20px;
   margin-bottom: 70px;
 }
 
-footer {
-  background-color: #333;
+.container-footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.footer-redondo {
+  background: linear-gradient(32deg, rgba(220,53,69,1) 31%, rgba(232,96,65,1) 100%);
   color: white;
   text-align: center;
-  padding: 10px;
+  padding: 5px;
   position: fixed;
   bottom: 0;
-  width: 100%;
+  width: 20%;
+  height: 50px;
+  border-top-left-radius: 100px;
+  border-top-right-radius: 100px;
+}
+
+.footer-redondo p {
+  font-size: 15px;
+  line-height: 11px;
+  margin-bottom: 0px !important;
 }
 
 h2 {
   text-align: center;
+}
+
+.card-dec {
+  border-left: 5px solid #0071e9;
+}
+
+td img {
+  margin: 0 4px;
 }
 
 .dados-table {
@@ -55,7 +136,7 @@ h2 {
 }
 
 .dados-table thead {
-  background: linear-gradient(32deg, rgba(0,113,233,1) 0%, rgba(137,201,255,1) 100%);
+  background: linear-gradient(32deg, #0071e9 0%, rgba(137,201,255,1) 100%);
   color: white;
 }
 
@@ -65,6 +146,14 @@ h2 {
   border: 1px solid #ddd;
   text-align: left;
 }
+
+/* eu que editei isso abaixo */
+.dados-table td {
+  font-family: "Prompt", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+/* ***************** */
 
 .dados-table tr:nth-child(even) {
   background-color: #f2f2f2;
@@ -166,8 +255,4 @@ h2 {
   margin-bottom: 1rem;
 }
 
-.icones-header {
-  width: 22px;
-  height: 100%;
-  margin-left: 2px;
-}
+/***************************/

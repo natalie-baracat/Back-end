@@ -58,12 +58,74 @@ router.post('/novo', async (req, res) => {
     }
 })
 
+//rota editar (U)
+router.get('/:id/editar', async(req, res) => {
+    try {
+        const { id } = req.params
+        const resultado = 
+            await BD.query('select * from alunos where id_aluno = $1', [id])
+        
+        const turmasCadastradas = 
+            await BD.query('select * from turmas_escola order by nome')
+        
+        const disciplinasCadastradas = 
+            await BD.query('select * from disciplinas order by nome_disciplina')
+
+        const notasCadastradas =
+            await BD.query(`SELECT d.nome_disciplina, ad.media, ad.nr_faltas, ad.status FROM disciplinas AS d 
+                                INNER JOIN aluno_disciplina AS ad ON d.id_disciplina = ad.id_disciplina WHERE ad.id_aluno = $1`, [id] )
+
+        res.render('alunosTelas/editar', {
+            aluno : resultado.rows[0],
+            turmasCadastradas : turmasCadastradas.rows,
+            disciplinasCadastradas : disciplinasCadastradas.rows,
+            notasCadastradas : notasCadastradas.rows
+        })
+    } catch (erro) {
+        console.log('Erro ao editar aluno', erro);
+    }
+})
+
+router.post('/:id/editar', async(req, res) => {
+    try {
+        const { id } = req.params
+        const { nome, idade, email, cpf, sexo, id_turma } = req.body
+        await BD.query(`update alunos 
+                set nome = $1, 
+                idade = $2,
+                email = $3,
+                cpf = $4,
+                sexo = $5,
+                id_turma = $6
+                where id_aluno = $7`, [nome, idade, email, cpf, sexo, id_turma, id  ])
+        res.redirect('/alunos/')
+    } catch (erro) {
+        console.log('Erro ao gravar aluno', erro);        
+    }
+})
+
 //rota para excluir uma aluno (D - delete)
 router.post('/:id/deletar', async (req, res) => { //para acessar digito turma/id/deletar
     const {id} = req.params
     await BD.query('DELETE FROM alunos WHERE id_aluno = $1', [id])
     res.redirect('/alunos')
 }) 
+
+//rota para lançar nota
+router.post('/:id/lancar-nota', async(req, res) => {
+    try {
+        const { id } = req.params
+        const { media, faltas, id_disciplina } = req.body
+        await BD.query(`INSERT INTO aluno_disciplina(id_disciplina, id_aluno, media, nr_faltas)
+                            VALUES($1,$2,$3,$4)`, [id_disciplina, id, media, faltas]
+        )
+
+        res.redirect(`/alunos/${id}/editar`)
+    } catch (erro) {
+        console.log('Erro ao gravar aluno', erro);        
+    }
+})
+
 
 
 module.exports = router
